@@ -1,0 +1,1 @@
+C:\Users\kpuja\Downloads\flutter-riverpod-tutorial-starter-project\flutter-riverpod-tutorial-starter-project\build\app\intermediates\cxx\Debug\4a1t5t65\obj\armeabi-v7a

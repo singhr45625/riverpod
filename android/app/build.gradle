@@ -1,0 +1,66 @@
+plugins {
+    id "com.android.application"  // Apply the Android application plugin
+    id "kotlin-android"             // Apply the Kotlin Android plugin
+    id "dev.flutter.flutter-gradle-plugin"  // Apply the Flutter Gradle plugin
+}
+
+// Configuration to load properties from local.properties
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+// Define variables for Flutter version code and name, with defaults
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) {
+    flutterVersionCode = '1'
+}
+
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) {
+    flutterVersionName = '1.0'
+}
+
+android {
+    namespace "com.example.riverpod_files"  // Namespace for the application
+    compileSdkVersion 34                   // Compile with Android SDK 34
+    ndkVersion flutter.ndkVersion           // Use NDK version from Flutter config
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17  // Use Java 17 source compatibility
+        targetCompatibility JavaVersion.VERSION_17  // Use Java 17 target compatibility
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'                     // Compile Kotlin for JVM 17
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin' // Include Kotlin source directory
+    }
+
+    defaultConfig {
+        applicationId "com.example.riverpod_files" // Application ID
+        minSdkVersion 21                       // Minimum supported Android SDK
+        targetSdkVersion 34                      // Target Android SDK
+        versionCode flutterVersionCode.toInteger()   // Application version code
+        versionName flutterVersionName             // Application version name
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.debug  // Use debug signing for releases (for development)
+        }
+    }
+}
+
+flutter {
+    source '../..'  // Path to the Flutter source code
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22"  // Explicit Kotlin dependency
+}

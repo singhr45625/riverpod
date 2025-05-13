@@ -1,0 +1,2 @@
+C:/Users/kpuja/Downloads/flutter-riverpod-tutorial-starter-project/flutter-riverpod-tutorial-starter-project/android/app/.cxx/Debug/4a1t5t65/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/Users/kpuja/Downloads/flutter-riverpod-tutorial-starter-project/flutter-riverpod-tutorial-starter-project/android/app/.cxx/Debug/4a1t5t65/arm64-v8a/CMakeFiles/rebuild_cache.dir
