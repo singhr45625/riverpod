@@ -1,18 +1,14 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:riverpod_files/models/product.dart';
 
-class CartNotifier extends Notifier<Set<Product>> {
+part 'cart_provider.g.dart';
+
+@riverpod
+class CartNotifier extends _$CartNotifier {
   // initial value
   @override
   Set<Product> build() {
-     return const{
-       Product(
-           id: '8',
-           title: 'Electric Guitar',
-           price: 45,
-           image: 'assets/products/guitar.png'
-       ),
-     };
+     return const{};
   }
   //updating method
 
@@ -29,6 +25,13 @@ class CartNotifier extends Notifier<Set<Product>> {
  }
 }
 
-final cartNotifierProvider = NotifierProvider<CartNotifier, Set<Product>>(() {
-  return CartNotifier();
-});
+@riverpod
+int cartTotal(ref) {
+  final cartProducts = ref.watch(cartNotifierProvider);
+
+  int total = 0;
+   for(Product product in cartProducts) {
+     total += product.price;
+   }
+   return total;
+}
