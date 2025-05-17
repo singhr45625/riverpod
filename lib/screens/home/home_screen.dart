@@ -28,7 +28,7 @@ class HomeScreen extends ConsumerWidget {
           ),
           itemBuilder:(context, index) {
             return Container(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.all(15),
               color: Colors.blueGrey.withOpacity(0.05),
               child: Column(
                 children: [
